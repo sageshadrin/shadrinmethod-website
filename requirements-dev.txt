@@ -1,0 +1,2 @@
+# Optional browser verification only; the website has no runtime dependencies.
+playwright>=1.50,<2
