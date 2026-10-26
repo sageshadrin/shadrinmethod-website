@@ -43,8 +43,9 @@ def check():
             errors.append(f"{relative}: duplicate IDs")
         if len(page.attrs("h1")) != 1:
             errors.append(f"{relative}: expected one h1")
-        if not page.attrs("html") or page.attrs("html")[0].get("lang") != "en":
-            errors.append(f"{relative}: missing English language declaration")
+        expected_lang = "ru" if path.startswith("/ru/") else "en"
+        if not page.attrs("html") or page.attrs("html")[0].get("lang") != expected_lang:
+            errors.append(f"{relative}: missing {expected_lang} language declaration")
         canonical = [a.get("href") for a in page.attrs("link") if a.get("rel") == "canonical"]
         if canonical != [expected_url]:
             errors.append(f"{relative}: canonical must be {expected_url}")
@@ -60,7 +61,7 @@ def check():
         if not icons:
             errors.append(f"{relative}: missing favicon")
         nav = [a for a in page.attrs("a") if a.get("aria-current") == "page"]
-        expected_nav = "/books/" if path.startswith("/books/") else path
+        expected_nav = "/ru/books/" if path.startswith("/ru/books/") else ("/books/" if path.startswith("/books/") else path)
         if len(nav) != 1 or nav[0].get("href") != expected_nav:
             errors.append(f"{relative}: incorrect current navigation item")
         references = [a[key] for _, a in page.tags for key in ["href", "src"] if key in a]
@@ -82,7 +83,7 @@ def check():
                     errors.append(f"{relative}: missing fragment {reference}")
         if "{{" in file.read_text():
             errors.append(f"{relative}: unresolved template token")
-    for path in ["/", "/method/", "/books/", "/author/", "/resources/"]:
+    for path in ["/", "/method/", "/books/", "/author/", "/resources/", "/ru/", "/ru/method/", "/ru/books/", "/ru/author/", "/ru/resources/"]:
         if not local_file(path).is_file():
             errors.append(f"Missing required page: {path}")
     image = (ROOT / "assets/social-card.png").read_bytes()
