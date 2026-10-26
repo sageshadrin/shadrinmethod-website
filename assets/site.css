@@ -26,3 +26,7 @@ main:focus{outline:none}
 .section-links a{color:var(--accent);text-underline-offset:4px}
 @media(max-width:700px){.site-nav{align-items:flex-start;gap:12px}.brand{padding:8px 0}.nav-links{width:100%;gap:4px 18px}.page-hero{padding:56px 0 38px}.placeholder{padding:24px}.page-content{padding-bottom:72px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}}
+
+/* Localized navigation */
+.lang-switch{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-width:40px;padding:6px 11px;color:var(--accent);font-size:13px;font-weight:800;letter-spacing:.08em;text-decoration:none;border:1px solid var(--line);border-radius:6px}
+.lang-switch:hover{border-color:var(--accent);background:var(--surface)}
