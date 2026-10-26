@@ -66,6 +66,12 @@ def check():
                             audit = page.evaluate("async () => (await axe.run(document, {runOnly: {type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']}})).violations")
                             if audit:
                                 problems.append(f"Accessibility {route} at {width}: " + json.dumps(audit))
+                        # Test that the language switch preserves the equivalent page.
+                        other_locale = route.removeprefix("/ru") if route.startswith("/ru/") else "/ru" + route
+                        page.locator(".lang-switch").click()
+                        page.wait_for_url(origin + other_locale)
+                        assert urlsplit(page.url).path == other_locale
+                        page.goto(origin + route, wait_until="networkidle")
                         # Click every navigation entry from each page at every viewport.
                         for destination in (["/ru" + x for x in NAV_ROUTES] if route.startswith("/ru/") else NAV_ROUTES):
                             page.locator(f'.nav-links a[href="{destination}"]').click()
