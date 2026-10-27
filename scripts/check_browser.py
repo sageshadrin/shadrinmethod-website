@@ -50,7 +50,7 @@ def check():
                         response = page.goto(origin + route, wait_until="networkidle")
                         assert response.status == 200, route
                         assert page.locator("h1").count() == 1, route
-                        current_section = "/books/" if route.startswith("/books/") else route
+                        current_section = "/ru/books/" if route.startswith("/ru/books/") else ("/books/" if route.startswith("/books/") else route)
                         assert page.locator('nav a[aria-current="page"]').get_attribute("href") == current_section
                         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth"), f"Overflow: {route} at {width}"
                         # The first keyboard action must reveal the skip link and move focus to main.
@@ -60,14 +60,20 @@ def check():
                         page.keyboard.press("Enter")
                         assert page.locator("main").evaluate("el => el === document.activeElement"), route
                         if width in [375, 1440] and args.screenshots:
-                            page.screenshot(path=str(args.screenshots / f"{route.strip('/') or 'home'}-{width}.png"), full_page=True)
+                            page.screenshot(path=str(args.screenshots / f"{route.strip('/').replace('/', '-') or 'home'}-{width}.png"), full_page=True)
                         if args.axe and width in [375, 1440]:
                             page.add_script_tag(path=str(args.axe))
                             audit = page.evaluate("async () => (await axe.run(document, {runOnly: {type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']}})).violations")
                             if audit:
                                 problems.append(f"Accessibility {route} at {width}: " + json.dumps(audit))
+                        # Test that the language switch preserves the equivalent page.
+                        other_locale = route.removeprefix("/ru") if route.startswith("/ru/") else "/ru" + route
+                        page.locator(".lang-switch").click()
+                        page.wait_for_url(origin + other_locale)
+                        assert urlsplit(page.url).path == other_locale
+                        page.goto(origin + route, wait_until="networkidle")
                         # Click every navigation entry from each page at every viewport.
-                        for destination in NAV_ROUTES:
+                        for destination in (["/ru" + x for x in NAV_ROUTES] if route.startswith("/ru/") else NAV_ROUTES):
                             page.locator(f'.nav-links a[href="{destination}"]').click()
                             page.wait_for_url(origin + destination)
                             assert urlsplit(page.url).path == destination
