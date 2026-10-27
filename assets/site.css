@@ -34,3 +34,35 @@ main:focus{outline:none}
    Page H1 is governed by this stylesheet only; do not override in page-local styles.
    The home hero may need more bottom space for its CTA, but H1 typography stays identical. */
 @media(max-width:700px){h1{font-size:clamp(2rem,7.5vw,2.6rem)}}
+
+/* MOBILE HEADER STANDARD V1 — one brand/language row plus wrapped navigation.
+   Keep all links visible and keyboard-accessible without an overflow menu. */
+@media(max-width:700px){
+  .site-nav{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:center;
+    gap:8px 12px;
+    padding:14px 0 12px;
+  }
+  .site-nav .brand{
+    grid-column:1;
+    grid-row:1;
+    padding:0;
+    min-width:0;
+    line-height:1.4;
+  }
+  .site-nav .lang-switch{
+    grid-column:2;
+    grid-row:1;
+    justify-self:end;
+  }
+  .site-nav .nav-links{
+    grid-column:1 / -1;
+    grid-row:2;
+    width:100%;
+    gap:0 14px;
+    align-items:center;
+  }
+  .site-nav .nav-links a{padding:3px 0}
+}
