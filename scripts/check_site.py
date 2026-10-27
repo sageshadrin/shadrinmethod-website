@@ -3,6 +3,7 @@
 from html.parser import HTMLParser
 from pathlib import Path
 import struct
+import re
 from urllib.parse import unquote, urljoin, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -43,6 +44,14 @@ def check():
             errors.append(f"{relative}: duplicate IDs")
         if len(page.attrs("h1")) != 1:
             errors.append(f"{relative}: expected one h1")
+        # Heading-system guard: all pages inherit H1/hero typography from shared site.css.
+        if any(a.get("style") for a in page.attrs("h1")):
+            errors.append(f"{relative}: H1 must not have inline style")
+        local_styles = re.findall(r"<style\\b[^>]*>(.*?)</style>", file.read_text(), flags=re.I | re.S)
+        for local_style in local_styles:
+            if re.search(r"(?m)^\\s*(?:h1|\\.hero|\\.page-hero)(?:\\s+h1)?\\s*\\{", local_style):
+                errors.append(f"{relative}: page-specific hero/H1 typography forbidden; update assets/site.css instead")
+
         expected_lang = "ru" if path.startswith("/ru/") else "en"
         if not page.attrs("html") or page.attrs("html")[0].get("lang") != expected_lang:
             errors.append(f"{relative}: missing {expected_lang} language declaration")
