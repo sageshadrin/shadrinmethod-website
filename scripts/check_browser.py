@@ -53,6 +53,15 @@ def check():
                         current_section = "/ru/books/" if route.startswith("/ru/books/") else ("/books/" if route.startswith("/books/") else route)
                         assert page.locator('nav a[aria-current="page"]').get_attribute("href") == current_section
                         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth"), f"Overflow: {route} at {width}"
+                        if width <= 700:
+                            brand_box = page.locator(".site-nav .brand").bounding_box()
+                            lang_box = page.locator(".site-nav .lang-switch").bounding_box()
+                            nav_box = page.locator(".site-nav .nav-links").bounding_box()
+                            header_box = page.locator("header").bounding_box()
+                            assert brand_box and lang_box and nav_box and header_box, route
+                            assert abs(brand_box["y"] - lang_box["y"]) < 18, f"Language switch not in brand row: {route}"
+                            assert nav_box["y"] > brand_box["y"], f"Navigation not below brand: {route}"
+                            assert header_box["height"] < 185, f"Mobile header too tall: {route}"
                         # The first keyboard action must reveal the skip link and move focus to main.
                         page.keyboard.press("Tab")
                         assert page.locator(".skip-link").evaluate("el => el === document.activeElement"), route
