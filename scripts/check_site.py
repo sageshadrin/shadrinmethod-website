@@ -47,9 +47,9 @@ def check():
         # Heading-system guard: all pages inherit H1/hero typography from shared site.css.
         if any(a.get("style") for a in page.attrs("h1")):
             errors.append(f"{relative}: H1 must not have inline style")
-        local_styles = re.findall(r"<style\\b[^>]*>(.*?)</style>", file.read_text(), flags=re.I | re.S)
+        local_styles = re.findall(r"<style\b[^>]*>(.*?)</style>", file.read_text(), flags=re.I | re.S)
         for local_style in local_styles:
-            if re.search(r"(?m)^\\s*(?:h1|\\.hero|\\.page-hero)(?:\\s+h1)?\\s*\\{", local_style):
+            if re.search(r"(?m)^\s*(?:h1|\.hero|\.page-hero)(?:\s+h1)?\s*\{", local_style):
                 errors.append(f"{relative}: page-specific hero/H1 typography forbidden; update assets/site.css instead")
 
         expected_lang = "ru" if path.startswith("/ru/") else "en"
