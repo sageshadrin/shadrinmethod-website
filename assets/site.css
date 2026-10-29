@@ -50,3 +50,8 @@ main:focus{outline:none}
 .contact-privacy{font-size:13px;color:var(--muted);margin:0}
 
 .contact-honeypot{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+
+/* About the Author: portrait supplied by the author. */
+.author-photo{margin:30px auto 38px;text-align:center;max-width:280px}
+.author-photo img{display:block;width:240px;height:240px;max-width:100%;object-fit:cover;border-radius:12px;border:1px solid var(--line);margin:auto}
+.author-photo figcaption{margin-top:10px;color:var(--muted);font-size:14px;letter-spacing:.08em}
