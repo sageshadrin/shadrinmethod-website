@@ -44,22 +44,26 @@
     <section class="container page-content">
       <div class="contact-layout">
         <p class="contact-intro">Have a question about a book, this website, or a possible collaboration? You can write to us here.</p>
-        <!-- Backend not selected. Form stays disabled rather than collecting personal information without delivery. -->
-        <form class="contact-form" method="post" action="#" id="contact-form">
-          <p class="contact-status" role="status">The form layout is ready, but submissions are not yet connected. Sending will be enabled after a receiving address and delivery service have been configured and tested.</p>
+        <!-- Static form submits to FormSubmit.co; first-time activation requires recipient email confirmation. -->
+        <form class="contact-form" method="POST" action="https://formsubmit.co/sageshadrin@gmail.com" id="contact-form">
+          <p class="contact-status" role="status">Your message will be sent to our inbox. The receiving email must be confirmed before the form can deliver messages.</p>
+          <input type="hidden" name="_subject" value="New message from ShadrinMethod.com (EN)">
+          <input type="hidden" name="_next" value="https://shadrinmethod.com/contact/thanks/">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="contact-honeypot">
           <div class="contact-field">
             <label for="contact-name">Name</label>
-            <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="120" required disabled>
+            <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="120" required>
           </div>
           <div class="contact-field">
             <label for="contact-email">Email</label>
-            <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required disabled>
+            <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required>
           </div>
           <div class="contact-field">
             <label for="contact-message">Your question</label>
-            <textarea id="contact-message" name="message" rows="6" maxlength="6000" required disabled></textarea>
+            <textarea id="contact-message" name="message" rows="6" maxlength="6000" required></textarea>
           </div>
-          <button class="button" type="submit" disabled>Send message</button>
+          <button class="button" type="submit">Send message</button>
+          <p class="contact-privacy">By sending a message, you agree to the use of the information provided to respond to your inquiry. Messages are processed by the third-party service FormSubmit and delivered by email. Please do not include sensitive information.</p>
         </form>
       </div>
     </section>
