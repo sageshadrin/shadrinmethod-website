@@ -70,7 +70,9 @@ def check():
         if not icons:
             errors.append(f"{relative}: missing favicon")
         nav = [a for a in page.attrs("a") if a.get("aria-current") == "page"]
-        expected_nav = ("/ru/books/" if path.startswith("/ru/books/") else
+        expected_nav = ("/ru/resources/" if path.startswith("/ru/resources/") else
+                        "/resources/" if path.startswith("/resources/") else
+                        "/ru/books/" if path.startswith("/ru/books/") else
                         "/books/" if path.startswith("/books/") else
                         "/ru/contact/" if path.startswith("/ru/contact/thanks/") else
                         "/contact/" if path.startswith("/contact/thanks/") else path)
