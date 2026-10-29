@@ -82,7 +82,7 @@ def check():
             href = link.get("href", "")
             parsed_link = urlsplit(href)
             host = (parsed_link.hostname or "").lower()
-            if host == "amzn.to" or re.fullmatch(r"(?:[a-z0-9-]+\\.)*amazon\\.[a-z.]+", host):
+            if host == "amzn.to" or re.fullmatch(r"(?:[a-z0-9-]+\.)*amazon\.[a-z.]+", host):
                 tags = parse_qs(parsed_link.query)
                 for tag in ("utm_source", "utm_medium", "utm_campaign", "utm_content"):
                     if not tags.get(tag) or not tags[tag][0]:
