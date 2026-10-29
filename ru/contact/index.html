@@ -44,22 +44,26 @@
     <section class="container page-content">
       <div class="contact-layout">
         <p class="contact-intro">Есть вопрос о книге, сайте или возможном сотрудничестве? Напишите нам через эту форму.</p>
-        <!-- Backend not selected. Form stays disabled rather than collecting personal information without delivery. -->
-        <form class="contact-form" method="post" action="#" id="contact-form">
-          <p class="contact-status" role="status">Форма подготовлена, но отправка пока не подключена. Мы включим её после настройки адреса для получения сообщений и проверки доставки.</p>
+        <!-- Static form submits to FormSubmit.co; first-time activation requires recipient email confirmation. -->
+        <form class="contact-form" method="POST" action="https://formsubmit.co/sageshadrin@gmail.com" id="contact-form">
+          <p class="contact-status" role="status">Сообщение будет отправлено на нашу почту. Перед первым использованием формы необходимо подтвердить адрес получателя.</p>
+          <input type="hidden" name="_subject" value="Новое сообщение с сайта ShadrinMethod.com (RU)">
+          <input type="hidden" name="_next" value="https://shadrinmethod.com/ru/contact/thanks/">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="contact-honeypot">
           <div class="contact-field">
             <label for="contact-name">Имя</label>
-            <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="120" required disabled>
+            <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="120" required>
           </div>
           <div class="contact-field">
             <label for="contact-email">Электронная почта</label>
-            <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required disabled>
+            <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required>
           </div>
           <div class="contact-field">
             <label for="contact-message">Суть вопроса</label>
-            <textarea id="contact-message" name="message" rows="6" maxlength="6000" required disabled></textarea>
+            <textarea id="contact-message" name="message" rows="6" maxlength="6000" required></textarea>
           </div>
-          <button class="button" type="submit" disabled>Отправить сообщение</button>
+          <button class="button" type="submit">Отправить сообщение</button>
+          <p class="contact-privacy">Отправляя сообщение, вы соглашаетесь с обработкой указанных данных для ответа на ваш вопрос. Сообщение передаётся через сторонний сервис FormSubmit, который доставляет его по электронной почте. Не отправляйте конфиденциальную информацию.</p>
         </form>
       </div>
     </section>
