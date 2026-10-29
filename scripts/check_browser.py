@@ -11,7 +11,7 @@ from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-NAV_ROUTES = ["/", "/method/", "/books/", "/author/", "/resources/"]
+NAV_ROUTES = ["/", "/method/", "/books/", "/author/", "/resources/", "/contact/"]
 
 
 class Handler(SimpleHTTPRequestHandler):
@@ -50,7 +50,10 @@ def check():
                         response = page.goto(origin + route, wait_until="networkidle")
                         assert response.status == 200, route
                         assert page.locator("h1").count() == 1, route
-                        current_section = "/ru/books/" if route.startswith("/ru/books/") else ("/books/" if route.startswith("/books/") else route)
+                        current_section = ("/ru/books/" if route.startswith("/ru/books/") else
+                                           "/books/" if route.startswith("/books/") else
+                                           "/ru/contact/" if route.startswith("/ru/contact/thanks/") else
+                                           "/contact/" if route.startswith("/contact/thanks/") else route)
                         assert page.locator('nav a[aria-current="page"]').get_attribute("href") == current_section
                         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth"), f"Overflow: {route} at {width}"
                         # The first keyboard action must reveal the skip link and move focus to main.
