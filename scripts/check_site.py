@@ -4,7 +4,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 import struct
 import re
-from urllib.parse import unquote, urljoin, urlsplit
+from urllib.parse import parse_qs, unquote, urljoin, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = "https://shadrinmethod.com"
@@ -76,6 +76,19 @@ def check():
                         "/contact/" if path.startswith("/contact/thanks/") else path)
         if len(nav) != 1 or nav[0].get("href") != expected_nav:
             errors.append(f"{relative}: incorrect current navigation item")
+        # Every link to an Amazon product must have stable, book-specific UTM tags.
+        # UTM tags alone do NOT provide Amazon purchase attribution.
+        for link in page.attrs("a"):
+            href = link.get("href", "")
+            parsed_link = urlsplit(href)
+            host = (parsed_link.hostname or "").lower()
+            if host == "amzn.to" or re.fullmatch(r"(?:[a-z0-9-]+\\.)*amazon\\.[a-z.]+", host):
+                tags = parse_qs(parsed_link.query)
+                for tag in ("utm_source", "utm_medium", "utm_campaign", "utm_content"):
+                    if not tags.get(tag) or not tags[tag][0]:
+                        errors.append(f"{relative}: Amazon link missing {tag}: {href}")
+                if tags.get("utm_source") and tags["utm_source"][0] != "shadrinmethod.com":
+                    errors.append(f"{relative}: Amazon link has unexpected utm_source: {href}")
         references = [a[key] for _, a in page.tags for key in ["href", "src"] if key in a]
         references.append(meta.get("og:image", ""))
         for reference in references:
