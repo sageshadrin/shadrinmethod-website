@@ -154,3 +154,12 @@ Stage 1 не содержит команд или workflow публикации,
 существующие настройки GitHub Pages. Публикация требует отдельного утверждения
 автора. Предварительный просмотр выполняется через временный сервер и скриншоты
 в облаке.
+
+## Contacts / Контакты — isolated deployment
+
+- Menu labels: English **Contacts**, Russian **Контакты**; page headings **Contact Us** and **Связаться с нами**.
+- Addresses: `/contact/` and `/ru/contact/`. Each has exactly three user-visible fields: name, email, message.
+- FormSubmit.co POST recipient: `sageshadrin@gmail.com`, explicitly provided by website owner. A hidden honeypot field is used.
+- Redirects: `/contact/thanks/` and `/ru/contact/thanks/` after successful submission; links to FormSubmit's privacy policy.
+- FormSubmit's receiving address must be confirmed by clicking its email activation link upon first test submission. **Code deployment does not by itself activate FormSubmit.** Do not state delivery is verified until a confirmed test email arrives.
+- Contact pages are deployed independently of the unfinished Overthinking book page.
