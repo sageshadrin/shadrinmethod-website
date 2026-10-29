@@ -163,3 +163,34 @@ Stage 1 не содержит команд или workflow публикации,
 - Redirects: `/contact/thanks/` and `/ru/contact/thanks/` after successful submission; links to FormSubmit's privacy policy.
 - FormSubmit's receiving address must be confirmed by clicking its email activation link upon first test submission. **Code deployment does not by itself activate FormSubmit.** Do not state delivery is verified until a confirmed test email arrives.
 - Contact pages are deployed independently of the unfinished Overthinking book page.
+
+
+## Amazon: UTM-маркировка ссылок из сайта (29 октября 2026)
+
+Все **прямые ссылки на книги Amazon** в публичных HTML-страницах должны
+содержать UTM-параметры:
+
+- `utm_source=shadrinmethod.com` — фиксированный источник.
+- `utm_medium=referral` — переход с собственного сайта.
+- `utm_campaign=book1_behavioral_patterns` или `book2_overthinking` — идентификатор книги.
+- `utm_content=en_book_page_primary`, `ru_book_page_primary` или
+  `en_book_page_bottom` / `ru_book_page_bottom` — язык и место ссылки.
+
+Образец (HTML-атрибут `href` с HTML-экранированием `&amp;`):
+
+```html
+<a href="https://www.amazon.com/dp/B0HM27MPX7?utm_source=shadrinmethod.com&amp;utm_medium=referral&amp;utm_campaign=book2_overthinking&amp;utm_content=en_book_page_primary">View on Amazon</a>
+```
+
+Для новых книг создавать отдельный `utm_campaign`. Для карточек в каталогах,
+статей, писем и будущих страниц назначать однозначный `utm_content`, не
+копируя значение из другой страницы. Сохранять исходный ASIN и действующие
+внешние ссылки. `scripts/check_site.py` отклоняет новые ссылки на Amazon без
+полного набора UTM-параметров.
+
+**Ограничение:** UTM на конечном URL Amazon не устанавливает измерение покупок
+на стороне владельца сайта. Для атрибуции просмотров карточки и продаж на
+Amazon нужен отдельный **Amazon Attribution tag**, созданный в кабинете
+Amazon Ads для конкретной книги/канала. Для измерения количества исходящих
+кликов в собственном кабинете аналитики нужно отдельно настроить сбор событий
+на сайте (например, GA4); на текущем этапе сбор таких событий не включён.
