@@ -84,3 +84,8 @@ main:focus{outline:none}
 .book-benefit p{color:var(--muted)}
 .book-end{padding-bottom:72px}
 @media(max-width:650px){.book-card{grid-template-columns:125px 1fr;gap:16px;padding:16px}.book-card-art{padding:16px 6px}.book-card-art span{font-size:.95rem}.book-card-copy .button{padding:10px 12px;font-size:14px}.book-lead{grid-template-columns:1fr}.book-cover-slot{width:min(260px,100%);margin:auto}.book-benefits{grid-template-columns:1fr}}
+
+/* Original cover proportions; readable single-column catalog on phones. */
+.book-cover-image{display:block;width:100%;height:auto;max-width:100%;object-fit:contain;box-shadow:0 12px 24px #0004}
+.book-lead>*{min-width:0}
+@media(max-width:650px){.book-card{grid-template-columns:minmax(0,1fr)}.book-card>.book-cover-image{width:min(260px,100%);margin:auto}.book-lead>.book-cover-image{width:min(260px,100%);margin:auto}}
