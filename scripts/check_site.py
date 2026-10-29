@@ -70,7 +70,10 @@ def check():
         if not icons:
             errors.append(f"{relative}: missing favicon")
         nav = [a for a in page.attrs("a") if a.get("aria-current") == "page"]
-        expected_nav = "/ru/books/" if path.startswith("/ru/books/") else ("/books/" if path.startswith("/books/") else path)
+        expected_nav = ("/ru/books/" if path.startswith("/ru/books/") else
+                        "/books/" if path.startswith("/books/") else
+                        "/ru/contact/" if path.startswith("/ru/contact/thanks/") else
+                        "/contact/" if path.startswith("/contact/thanks/") else path)
         if len(nav) != 1 or nav[0].get("href") != expected_nav:
             errors.append(f"{relative}: incorrect current navigation item")
         references = [a[key] for _, a in page.tags for key in ["href", "src"] if key in a]
@@ -92,7 +95,7 @@ def check():
                     errors.append(f"{relative}: missing fragment {reference}")
         if "{{" in file.read_text():
             errors.append(f"{relative}: unresolved template token")
-    for path in ["/", "/method/", "/books/", "/author/", "/resources/", "/ru/", "/ru/method/", "/ru/books/", "/ru/author/", "/ru/resources/"]:
+    for path in ["/", "/method/", "/books/", "/author/", "/resources/", "/ru/", "/ru/method/", "/ru/books/", "/ru/author/", "/ru/resources/", "/contact/", "/ru/contact/", "/contact/thanks/", "/ru/contact/thanks/"]:
         if not local_file(path).is_file():
             errors.append(f"Missing required page: {path}")
     image = (ROOT / "assets/social-card.png").read_bytes()

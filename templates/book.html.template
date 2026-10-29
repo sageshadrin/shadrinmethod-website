@@ -33,7 +33,7 @@
           <li><a class="navlink" href="/method/">The Method</a></li>
           <li><a class="navlink" href="/books/" aria-current="page">Books</a></li>
           <li><a class="navlink" href="/author/">About the Author</a></li>
-          <li><a class="navlink" href="/resources/">Articles</a></li>
+          <li><a class="navlink" href="/resources/">Articles</a></li><li><a class="navlink" href="/contact/">Contacts</a></li>
       </ul>
     </nav>
   </header>
