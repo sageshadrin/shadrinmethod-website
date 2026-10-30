@@ -93,7 +93,7 @@ main:focus{outline:none}
 
 /* Articles: bilingual Overthinking navigation hub. Uses shared brand palette and H1 style. */
 .topic-hub{padding:16px 0 90px}
-.topic-breadcrumb{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:14px;margin:5px 0 26px}
+.topic-breadcrumb{display:flex;justify-content:flex-start;flex-wrap:wrap;gap:8px;align-items:center;padding:0;color:var(--muted);font-size:14px;margin:5px 0 26px}
 .topic-breadcrumb a{color:var(--accent);text-underline-offset:4px}
 .topic-intro{max-width:840px;color:var(--muted);font-size:1.18rem;line-height:1.85;margin:0 0 44px}
 .topic-intro p{margin:0 0 18px}
