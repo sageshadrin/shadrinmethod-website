@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://shadrinmethod.com/</loc>
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/method/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/method/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/method/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/ru/method/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/method/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/method/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/books/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/books/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/books/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/ru/books/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/books/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/books/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/books/behavioral-patterns/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/books/behavioral-patterns/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/books/behavioral-patterns/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/ru/books/behavioral-patterns/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/books/behavioral-patterns/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/books/behavioral-patterns/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/books/overthinking/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/books/overthinking/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/books/overthinking/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/ru/books/overthinking/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/books/overthinking/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/books/overthinking/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/author/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/author/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/author/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/ru/author/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/author/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/author/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/resources/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/ru/resources/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/resources/overthinking/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/overthinking/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/overthinking/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/ru/resources/overthinking/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/overthinking/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/overthinking/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/resources/overthinking/replaying-work-conversations/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/overthinking/replaying-work-conversations/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/overthinking/replaying-work-conversations/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/ru/resources/overthinking/replaying-work-conversations/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/overthinking/replaying-work-conversations/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/overthinking/replaying-work-conversations/" />
+  </url>
+</urlset>
