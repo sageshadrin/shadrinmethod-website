@@ -50,7 +50,9 @@ def check():
                         response = page.goto(origin + route, wait_until="networkidle")
                         assert response.status == 200, route
                         assert page.locator("h1").count() == 1, route
-                        current_section = ("/ru/books/" if route.startswith("/ru/books/") else
+                        current_section = ("/ru/resources/" if route.startswith("/ru/resources/") else
+                                           "/resources/" if route.startswith("/resources/") else
+                                           "/ru/books/" if route.startswith("/ru/books/") else
                                            "/books/" if route.startswith("/books/") else
                                            "/ru/contact/" if route.startswith("/ru/contact/thanks/") else
                                            "/contact/" if route.startswith("/contact/thanks/") else route)
