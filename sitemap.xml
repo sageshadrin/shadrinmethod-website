@@ -83,4 +83,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/overthinking/replaying-work-conversations/" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/overthinking/replaying-work-conversations/" />
   </url>
+  <url>
+    <loc>https://shadrinmethod.com/resources/overthinking/analysis-paralysis-at-work/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/overthinking/analysis-paralysis-at-work/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/overthinking/analysis-paralysis-at-work/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/ru/resources/overthinking/analysis-paralysis-at-work/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/overthinking/analysis-paralysis-at-work/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/overthinking/analysis-paralysis-at-work/" />
+  </url>
 </urlset>
