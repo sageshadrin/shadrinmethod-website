@@ -103,4 +103,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/overthinking/why-boss-criticism-still-hurts/" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/overthinking/why-boss-criticism-still-hurts/" />
   </url>
+  <url>
+    <loc>https://shadrinmethod.com/resources/overthinking/client-presentation-anxiety/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/overthinking/client-presentation-anxiety/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/overthinking/client-presentation-anxiety/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/ru/resources/overthinking/client-presentation-anxiety/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/overthinking/client-presentation-anxiety/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/overthinking/client-presentation-anxiety/" />
+  </url>
 </urlset>
