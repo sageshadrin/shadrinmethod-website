@@ -186,9 +186,13 @@
         } catch (err) { /* Fall back to the original Amazon URL. */ }
       }
 
-      // Fallback UTM tagging records the referring article in the link.
-      // This does NOT mean an Amazon purchase can be attributed to it.
+      // No official article tag: fall back to UTM, NEVER to the default
+      // direct-traffic Amazon Attribution tag embedded in the HTML.
+      // UTM alone cannot attribute Amazon purchases.
       if (fromArticle) {
+        url.searchParams.delete("maas");
+        url.searchParams.delete("ref_");
+        url.searchParams.delete("tag");
         url.searchParams.set("utm_source", "shadrinmethod.com");
         url.searchParams.set("utm_medium", "referral");
         url.searchParams.set("utm_campaign", bookId === "overthinking" ? "book2_overthinking" : "book_" + bookId);
