@@ -22,7 +22,8 @@
     "replaying-work-conversations": true,
     "analysis-paralysis-at-work": true,
     "why-boss-criticism-still-hurts": true,
-    "client-presentation-anxiety": true
+    "client-presentation-anxiety": true,
+    "how-to-stop-thinking-about-work": true
   };
 
   var path = window.location.pathname;
