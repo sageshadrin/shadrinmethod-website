@@ -4,6 +4,6 @@
  * Key format: overthinking:<source_lang>:<article_slug> or overthinking:direct
  */
 window.SHADRIN_TRACKING = Object.freeze({
-  ga4_measurement_id: "",
+  ga4_measurement_id: "G-7B6QMCPRGF",
   amazon_attribution_links: Object.freeze({})
 });
