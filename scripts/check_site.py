@@ -78,14 +78,23 @@ def check():
                         "/contact/" if path.startswith("/contact/thanks/") else path)
         if len(nav) != 1 or nav[0].get("href") != expected_nav:
             errors.append(f"{relative}: incorrect current navigation item")
-        # Every link to an Amazon product must have stable, book-specific UTM tags.
-        # UTM tags alone do NOT provide Amazon purchase attribution.
+        # Official Amazon Attribution links use maas instead of UTM parameters.
+        # UTM-only links remain permitted as a fallback, but they do not provide
+        # Amazon purchase attribution.
         for link in page.attrs("a"):
             href = link.get("href", "")
             parsed_link = urlsplit(href)
             host = (parsed_link.hostname or "").lower()
             if host == "amzn.to" or re.fullmatch(r"(?:[a-z0-9-]+\.)*amazon\.[a-z.]+", host):
                 tags = parse_qs(parsed_link.query)
+                if "maas" in tags or "maas" in parsed_link.query.split("&"):
+                    maas = tags.get("maas", [])
+                    if (len(maas) != 1
+                            or not re.fullmatch(r"maas_adg_[0-9A-Fa-f]{32}_afap_abs", maas[0])
+                            or tags.get("tag") != ["maas"]
+                            or tags.get("ref_") != ["aa_maas"]):
+                        errors.append(f"{relative}: malformed Amazon Attribution link: {href}")
+                    continue
                 for tag in ("utm_source", "utm_medium", "utm_campaign", "utm_content"):
                     if not tags.get(tag) or not tags[tag][0]:
                         errors.append(f"{relative}: Amazon link missing {tag}: {href}")
