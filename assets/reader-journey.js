@@ -218,6 +218,26 @@
         });
       }
       if (isAmazon(url)) {
+        // Resolve the final destination again at click time, so a stale
+        // initial link cannot attribute article traffic to the direct tag.
+        if (bookId === "overthinking" && fromArticle) {
+          var key = "overthinking:" + fromLanguage + ":" + fromArticle;
+          var tag = attributionLinks[key];
+          if (typeof tag === "string" && tag) {
+            try {
+              var destination = new URL(tag);
+              if (destination.protocol === "https:" && isAmazon(destination)) {
+                anchor.href = destination.toString();
+              }
+            } catch (err) { /* Keep the safe, untagged fallback. */ }
+          } else {
+            var fallback = new URL(url.toString());
+            fallback.searchParams.delete("maas");
+            fallback.searchParams.delete("tag");
+            fallback.searchParams.delete("ref_");
+            anchor.href = fallback.toString();
+          }
+        }
         emit("book_to_amazon", {
           article_id: fromArticle || "direct",
           article_language: fromArticle ? fromLanguage : language,
