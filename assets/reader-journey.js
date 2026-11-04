@@ -109,7 +109,7 @@
     box.setAttribute("aria-label", language === "ru" ? "Настройки аналитики" : "Analytics preferences");
     var explanation = document.createElement("p");
     explanation.textContent = language === "ru"
-      ? "Помогите улучшить сайт: разрешите анонимную аналитику посещений и переходов к книгам через Google Analytics. Без согласия аналитика не загружается."
+      ? "Помогите улучшить сайт: разрешите Google Analytics собирать статистику посещений и переходов к книгам. Без согласия аналитика не загружается."
       : "Help improve this site: allow Google Analytics to measure visits and clicks to books. Analytics does not load without your consent.";
     var actions = document.createElement("div");
     actions.className = "shadrin-consent-actions";
