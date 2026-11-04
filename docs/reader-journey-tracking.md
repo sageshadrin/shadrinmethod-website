@@ -3,8 +3,8 @@
 ## Status
 
 - Source-aware navigation code: **installed on all 28 HTML pages**.
-- Google Analytics 4: **NOT LIVE** until the real `G-...` ID is added to `assets/tracking-config.js`; the user has not yet supplied one.
-- Amazon Attribution: **NOT LIVE** until official Amazon-generated attribution URLs are added.
+- Google Analytics 4: **LIVE** with Measurement ID `G-7B6QMCPRGF`, loaded after visitor consent; GA4 `article_to_book`, `book_view_from_article`, and `book_to_amazon` events were verified in Realtime on 2026-11-03.
+- Amazon Attribution: **LIVE TAGS INSTALLED**. Nine distinct official links from `Amazon_Attribution_Tags_Nov_3_2026.csv` are configured for four articles in two languages plus direct book-page traffic; verified placement in EN/RU Overthinking book page fallback HTML.
 - No paid services are required by the site implementation.
 
 ## How the click path works
@@ -18,12 +18,12 @@
 
 The site can observe a click to Amazon but **cannot confirm a purchase on Amazon through Google Analytics**. KDP sales attribution requires Amazon Attribution.
 
-## GA4 setup: manual ID required
+## GA4 setup: configured (ID G-7B6QMCPRGF)
 
-Create or locate a GA4 property, add a web data stream for `https://shadrinmethod.com/`, and copy its Measurement ID (`G-...`). In `assets/tracking-config.js`, update:
+The configured GA4 property has a web data stream for `https://shadrinmethod.com/`. The current Measurement ID in `assets/tracking-config.js` is:
 
 ```js
-ga4_measurement_id: "G-ACTUAL_ID_HERE",
+ga4_measurement_id: "G-7B6QMCPRGF",
 ```
 
 Only then will Google Analytics be offered via a language-appropriate consent banner. The Google tag loads after opt-in; visitors may change their choice from the footer.
@@ -35,9 +35,9 @@ Events:
 
 Event parameters: `article_id`, `article_language`, `book_id`, `link_position`. Register relevant event-scoped custom dimensions in GA4 for convenient breakdowns, and check Realtime/DebugView after connecting the measurement ID.
 
-## Amazon Attribution setup: official URLs required
+## Amazon Attribution setup: nine official URLs installed
 
-Amazon officially supports Amazon Attribution for eligible KDP accounts. In the Amazon Ads advertising console, open **Measurement and Reporting → Amazon Attribution**, create one campaign for Book II (Overthinking, ASIN B0HM27MPX7), and create separate ad groups or tags for the following sources, using shadrinmethod.com as the publisher and the corresponding organic channel where available:
+Amazon Attribution campaign `SITE_B2_OVERTHINKING_US_2026` was created on 2026-11-03 for Book II (Overthinking, ASIN B0HM27MPX7) with publisher `shadrinmethod.com` and channel `Display`. These nine ad groups map to unique official Amazon-generated links:
 
 | Suggested ad group | Config key |
 |---|---|
@@ -51,12 +51,12 @@ Amazon officially supports Amazon Attribution for eligible KDP accounts. In the 
 | EN / Presentation Anxiety | `overthinking:en:client-presentation-anxiety` |
 | RU / Presentation Anxiety | `overthinking:ru:client-presentation-anxiety` |
 
-Paste each corresponding **exact** generated tag URL into `amazon_attribution_links` in `assets/tracking-config.js`:
+All nine corresponding **exact** generated tag URLs are already installed in `amazon_attribution_links` in `assets/tracking-config.js`. Example structure (the source file contains the real links):
 
 ```js
 amazon_attribution_links: Object.freeze({
-  "overthinking:direct": "https://www.amazon.com/...",
-  "overthinking:en:replaying-work-conversations": "https://www.amazon.com/..."
+  "overthinking:direct": "<official Amazon Attribution URL>",
+  "overthinking:en:replaying-work-conversations": "<official Amazon Attribution URL>"
 })
 ```
 
@@ -74,7 +74,7 @@ Amazon Attribution uses a 14-day last-touch attribution model (not all sales are
 
 - Confirm the GitHub Pages deployment is successful.
 - Check article → book link contains `?from=<slug>&src_lang=<lang>`.
-- Check the book → Amazon link contains article-specific `utm_content` until official tags are supplied.
-- With GA4 configured and analytics consent, use Realtime/DebugView to confirm three events.
-- With Amazon Attribution tags configured, use Amazon Attribution reports to assess attributed purchases, units and royalties where the account supports those metrics.
+- Check the book → Amazon link contains the official article-specific Amazon Attribution `maas` parameter, and direct book-page visits use the direct tag (not UTM-only links).
+- GA4 Realtime verified all three events on 2026-11-03; re-test after tag activation to ensure outbound click events persist.
+- Check Amazon Attribution reporting after actual visitors follow the newly installed tags to assess attributed purchases, units and royalties where supported. Attribution events are not guaranteed to appear immediately.
 - Never equate clicks with confirmed book sales.
