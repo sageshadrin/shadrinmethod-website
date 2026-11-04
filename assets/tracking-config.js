@@ -14,6 +14,8 @@ window.SHADRIN_TRACKING = Object.freeze({
     "overthinking:ru:analysis-paralysis-at-work": "https://www.amazon.com/dp/B0HM27MPX7?maas=maas_adg_7E20D7B3444F9BCC60DB72AF0E39BACB_afap_abs&ref_=aa_maas&tag=maas",
     "overthinking:ru:client-presentation-anxiety": "https://www.amazon.com/dp/B0HM27MPX7?maas=maas_adg_FBA74D84E867D69DD4CDCA58096AF895_afap_abs&ref_=aa_maas&tag=maas",
     "overthinking:ru:replaying-work-conversations": "https://www.amazon.com/dp/B0HM27MPX7?maas=maas_adg_787D88BFEEAAFB0D5361DEDC71072FFE_afap_abs&ref_=aa_maas&tag=maas",
+    "overthinking:en:how-to-stop-thinking-about-work": "https://www.amazon.com/dp/B0HM27MPX7?maas=maas_adg_6E50CBE3710F8C987FC5074E616AAD17_afap_abs&ref_=aa_maas&tag=maas",
+    "overthinking:ru:how-to-stop-thinking-about-work": "https://www.amazon.com/dp/B0HM27MPX7?maas=maas_adg_A32E44A4E9669993F0CB9947F8FEAB82_afap_abs&ref_=aa_maas&tag=maas",
     "overthinking:ru:why-boss-criticism-still-hurts": "https://www.amazon.com/dp/B0HM27MPX7?maas=maas_adg_5BE2848BDA440ADA23A85EC1C9BCD2FD_afap_abs&ref_=aa_maas&tag=maas"
   })
 });
