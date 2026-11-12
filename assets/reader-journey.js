@@ -23,7 +23,8 @@
     "analysis-paralysis-at-work": true,
     "why-boss-criticism-still-hurts": true,
     "client-presentation-anxiety": true,
-    "how-to-stop-thinking-about-work": true
+    "how-to-stop-thinking-about-work": true,
+    "replaying-embarrassing-moment-at-work": true
   };
 
   var path = window.location.pathname;
@@ -170,6 +171,17 @@
         anchor.href = url.pathname + url.search + url.hash;
       }
 
+      if (sourceArticle === "replaying-embarrassing-moment-at-work" && isAmazon(url)) {
+        url.searchParams.delete("maas");
+        url.searchParams.delete("ref_");
+        url.searchParams.delete("tag");
+        url.searchParams.set("utm_source", "shadrinmethod.com");
+        url.searchParams.set("utm_medium", "referral");
+        url.searchParams.set("utm_campaign", "book2_overthinking");
+        url.searchParams.set("utm_content", language + "_article_" + sourceArticle + "_editorial");
+        anchor.href = url.toString();
+        continue;
+      }
       if (!bookId || !isAmazon(url)) continue;
 
       // Unique official Amazon Attribution tags, once provided by Amazon,
@@ -239,10 +251,10 @@
           }
         }
         emit("book_to_amazon", {
-          article_id: fromArticle || "direct",
-          article_language: fromArticle ? fromLanguage : language,
-          book_id: bookId || "other",
-          link_position: positionOf(anchor),
+          article_id: sourceArticle || fromArticle || "direct",
+          article_language: sourceArticle ? language : (fromArticle ? fromLanguage : language),
+          book_id: bookId || (sourceArticle ? "overthinking" : "other"),
+          link_position: sourceArticle ? "editorial" : positionOf(anchor),
           transport_type: "beacon"
         });
       }
