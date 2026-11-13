@@ -171,15 +171,12 @@
         anchor.href = url.pathname + url.search + url.hash;
       }
 
-      if (sourceArticle === "replaying-embarrassing-moment-at-work" && isAmazon(url)) {
-        url.searchParams.delete("maas");
-        url.searchParams.delete("ref_");
-        url.searchParams.delete("tag");
-        url.searchParams.set("utm_source", "shadrinmethod.com");
-        url.searchParams.set("utm_medium", "referral");
-        url.searchParams.set("utm_campaign", "book2_overthinking");
-        url.searchParams.set("utm_content", language + "_article_" + sourceArticle + "_editorial");
-        anchor.href = url.toString();
+      // Article editorial Amazon links use their own official attribution tag.
+      if (sourceArticle && isAmazon(url)) {
+        var articleTag = attributionLinks["overthinking:" + language + ":" + sourceArticle];
+        if (typeof articleTag === "string" && articleTag) {
+          anchor.href = articleTag;
+        }
         continue;
       }
       if (!bookId || !isAmazon(url)) continue;

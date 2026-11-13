@@ -6,6 +6,8 @@
 window.SHADRIN_TRACKING = Object.freeze({
   ga4_measurement_id: "G-7B6QMCPRGF",
   amazon_attribution_links: Object.freeze({
+    "overthinking:en:replaying-embarrassing-moment-at-work": "https://www.amazon.com/dp/B0HM27MPX7?maas=maas_adg_B3DBB28FDB47861A125173FD4F2B5659_afap_abs&ref_=aa_maas&tag=maas",
+    "overthinking:ru:replaying-embarrassing-moment-at-work": "https://www.amazon.com/dp/B0HM27MPX7?maas=maas_adg_C87C0060E8BD52A10B7AA8EF19AD5403_afap_abs&ref_=aa_maas&tag=maas",
     "overthinking:direct": "https://www.amazon.com/dp/B0HM27MPX7?maas=maas_adg_37ACA9D5465EBDBFD34476D8719ADB40_afap_abs&ref_=aa_maas&tag=maas",
     "overthinking:en:analysis-paralysis-at-work": "https://www.amazon.com/dp/B0HM27MPX7?maas=maas_adg_E44B4658E619F0918C60F72A5D1B0912_afap_abs&ref_=aa_maas&tag=maas",
     "overthinking:en:client-presentation-anxiety": "https://www.amazon.com/dp/B0HM27MPX7?maas=maas_adg_778E739DE1E6E66EF770BC29BBBBCE33_afap_abs&ref_=aa_maas&tag=maas",
