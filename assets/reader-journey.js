@@ -24,13 +24,15 @@
     "why-boss-criticism-still-hurts": true,
     "client-presentation-anxiety": true,
     "how-to-stop-thinking-about-work": true,
-    "replaying-embarrassing-moment-at-work": true
+    "replaying-embarrassing-moment-at-work": true,
+    "cant-start-tasks": true
   };
 
   var path = window.location.pathname;
   var language = /^\/ru\//.test(path) ? "ru" : "en";
-  var articleMatch = path.match(/^\/(?:ru\/)?resources\/overthinking\/([a-z0-9-]+)\/?$/);
-  var sourceArticle = articleMatch && validArticles[articleMatch[1]] ? articleMatch[1] : "";
+  var articleMatch = path.match(/^\/(?:ru\/)?resources\/(overthinking|procrastination)\/([a-z0-9-]+)\/?$/);
+  var sourceSeries = articleMatch ? articleMatch[1] : "";
+  var sourceArticle = articleMatch && validArticles[articleMatch[2]] ? articleMatch[2] : "";
   var bookMatch = path.match(/^\/(?:ru\/)?books\/([a-z0-9-]+)\/?$/);
   var bookId = bookMatch ? bookMatch[1] : "";
   var query = new URLSearchParams(window.location.search);
@@ -165,14 +167,14 @@
       if (!url) continue;
 
       // Source query parameters survive even when analytics is unavailable.
-      if (sourceArticle && bookFromUrl(url) === "overthinking") {
+      if (sourceSeries === "overthinking" && sourceArticle && bookFromUrl(url) === "overthinking") {
         url.searchParams.set("from", sourceArticle);
         url.searchParams.set("src_lang", language);
         anchor.href = url.pathname + url.search + url.hash;
       }
 
       // Article editorial Amazon links use their own official attribution tag.
-      if (sourceArticle && isAmazon(url)) {
+      if (sourceSeries === "overthinking" && sourceArticle && isAmazon(url)) {
         var articleTag = attributionLinks["overthinking:" + language + ":" + sourceArticle];
         if (typeof articleTag === "string" && articleTag) {
           anchor.href = articleTag;
@@ -250,8 +252,8 @@
         emit("book_to_amazon", {
           article_id: sourceArticle || fromArticle || "direct",
           article_language: sourceArticle ? language : (fromArticle ? fromLanguage : language),
-          book_id: bookId || (sourceArticle ? "overthinking" : "other"),
-          link_position: sourceArticle ? "editorial" : positionOf(anchor),
+          book_id: bookId || (sourceArticle ? sourceSeries : "other"),
+          link_position: sourceArticle ? (anchor.closest(".article-book-feature") ? "featured" : "editorial") : positionOf(anchor),
           transport_type: "beacon"
         });
       }
