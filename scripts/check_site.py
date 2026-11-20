@@ -91,7 +91,7 @@ def check():
                 elif parsed.scheme in ("http", "https"):
                     if host in {"shadrinmethod.com", "www.shadrinmethod.com"}:
                         continue
-                    if (re.fullmatch(r"(?:[a-z0-9-]+\\.)*amazon\\.[a-z.]+", host)
+                    if (re.fullmatch(r"(?:[a-z0-9-]+\.)*amazon\.[a-z.]+", host)
                             and re.match(r"^/dp/[a-zA-Z0-9]{10}(?:/|$)", parsed.path)):
                         continue
                     errors.append(f"{relative}: only internal and Amazon book links are allowed: {href}")
@@ -100,10 +100,10 @@ def check():
 
         # Contextual internal link gate for Procrastination articles.
         # Avoid forcing a link count that encourages repetitive SEO links.
-        if re.fullmatch(r"(?:ru/)?resources/procrastination/[^/]+/index\\.html", relative):
+        if re.fullmatch(r"(?:ru/)?resources/procrastination/[^/]+/index\.html", relative):
             source = file.read_text()
             article = re.search(
-                r'<article\\b[^>]*class="[^"]*article-prose[^"]*"[^>]*>(.*?)</article>',
+                r'<article\b[^>]*class="[^"]*article-prose[^"]*"[^>]*>(.*?)</article>',
                 source, flags=re.I | re.S
             )
             if not article:
