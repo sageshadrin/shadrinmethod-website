@@ -78,8 +78,28 @@ def check():
                         "/contact/" if path.startswith("/contact/thanks/") else path)
         if len(nav) != 1 or nav[0].get("href") != expected_nav:
             errors.append(f"{relative}: incorrect current navigation item")
-        # Article-ready gate: new Procrastination articles must include
-        # contextual links inside the article, not just menu/CTA links.
+        # Editorial outbound-link policy: all Resources pages link only to
+        # this website, except for Amazon book product pages (/dp/ASIN).
+        # No citations or links to independent external websites.
+        if relative.startswith(("resources/", "ru/resources/")):
+            for anchor in page.attrs("a"):
+                href = anchor.get("href", "")
+                parsed = urlsplit(href)
+                host = (parsed.hostname or "").lower()
+                if href.startswith("//"):
+                    errors.append(f"{relative}: protocol-relative external link prohibited: {href}")
+                elif parsed.scheme in ("http", "https"):
+                    if host in {"shadrinmethod.com", "www.shadrinmethod.com"}:
+                        continue
+                    if (re.fullmatch(r"(?:[a-z0-9-]+\.)*amazon\.[a-z.]+", host)
+                            and re.match(r"^/dp/[a-zA-Z0-9]{10}(?:/|$)", parsed.path)):
+                        continue
+                    errors.append(f"{relative}: only internal and Amazon book links are allowed: {href}")
+                elif parsed.scheme or parsed.netloc:
+                    errors.append(f"{relative}: unsupported external link: {href}")
+
+        # Contextual internal link gate for Procrastination articles.
+        # Avoid forcing a link count that encourages repetitive SEO links.
         if re.fullmatch(r"(?:ru/)?resources/procrastination/[^/]+/index\.html", relative):
             source = file.read_text()
             article = re.search(
@@ -89,18 +109,12 @@ def check():
             if not article:
                 errors.append(f"{relative}: missing main article body")
             else:
-                editorial_links = [a.get("href", "") for a in Page(article.group(1)).attrs("a")]
-                internal = {href for href in editorial_links if href.startswith("/")}
-                external = {
-                    href for href in editorial_links
-                    if urlsplit(href).scheme == "https"
-                    and (urlsplit(href).hostname or "").lower() not in
-                    {"amazon.com", "www.amazon.com", "shadrinmethod.com", "www.shadrinmethod.com"}
-                }
-                if len(internal) < 2:
-                    errors.append(f"{relative}: add at least two contextual internal links inside the article")
-                if not external:
-                    errors.append(f"{relative}: add a relevant independent source link inside the article")
+                contextual = [
+                    a.get("href", "") for a in Page(article.group(1)).attrs("a")
+                    if a.get("href", "").startswith("/") and not a.get("href", "").startswith("//")
+                ]
+                if not contextual:
+                    errors.append(f"{relative}: include a useful internal link in the article body")
 
         # Official Amazon Attribution links use maas instead of UTM parameters.
         # UTM-only links remain permitted as a fallback, but they do not provide
