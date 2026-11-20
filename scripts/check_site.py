@@ -80,10 +80,10 @@ def check():
             errors.append(f"{relative}: incorrect current navigation item")
         # Article-ready gate: new Procrastination articles must include
         # contextual links inside the article, not just menu/CTA links.
-        if re.fullmatch(r"(?:ru/)?resources/procrastination/[^/]+/index\\.html", relative):
+        if re.fullmatch(r"(?:ru/)?resources/procrastination/[^/]+/index\.html", relative):
             source = file.read_text()
             article = re.search(
-                r'<article\\b[^>]*class="[^"]*article-prose[^"]*"[^>]*>(.*?)</article>',
+                r'<article\b[^>]*class="[^"]*article-prose[^"]*"[^>]*>(.*?)</article>',
                 source, flags=re.I | re.S
             )
             if not article:
