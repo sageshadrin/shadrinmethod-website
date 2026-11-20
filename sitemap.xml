@@ -133,4 +133,24 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/overthinking/replaying-embarrassing-moment-at-work/" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/overthinking/replaying-embarrassing-moment-at-work/" />
   </url>
+  <url>
+    <loc>https://shadrinmethod.com/resources/procrastination/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/procrastination/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/procrastination/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/ru/resources/procrastination/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/procrastination/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/procrastination/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/resources/procrastination/cant-start-tasks/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/procrastination/cant-start-tasks/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/procrastination/cant-start-tasks/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/ru/resources/procrastination/cant-start-tasks/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/procrastination/cant-start-tasks/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/procrastination/cant-start-tasks/" />
+  </url>
 </urlset>
