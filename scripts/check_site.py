@@ -78,6 +78,30 @@ def check():
                         "/contact/" if path.startswith("/contact/thanks/") else path)
         if len(nav) != 1 or nav[0].get("href") != expected_nav:
             errors.append(f"{relative}: incorrect current navigation item")
+        # Article-ready gate: new Procrastination articles must include
+        # contextual links inside the article, not just menu/CTA links.
+        if re.fullmatch(r"(?:ru/)?resources/procrastination/[^/]+/index\.html", relative):
+            source = file.read_text()
+            article = re.search(
+                r'<article\b[^>]*class="[^"]*article-prose[^"]*"[^>]*>(.*?)</article>',
+                source, flags=re.I | re.S
+            )
+            if not article:
+                errors.append(f"{relative}: missing main article body")
+            else:
+                editorial_links = [a.get("href", "") for a in Page(article.group(1)).attrs("a")]
+                internal = {href for href in editorial_links if href.startswith("/")}
+                external = {
+                    href for href in editorial_links
+                    if urlsplit(href).scheme == "https"
+                    and (urlsplit(href).hostname or "").lower() not in
+                    {"amazon.com", "www.amazon.com", "shadrinmethod.com", "www.shadrinmethod.com"}
+                }
+                if len(internal) < 2:
+                    errors.append(f"{relative}: add at least two contextual internal links inside the article")
+                if not external:
+                    errors.append(f"{relative}: add a relevant independent source link inside the article")
+
         # Official Amazon Attribution links use maas instead of UTM parameters.
         # UTM-only links remain permitted as a fallback, but they do not provide
         # Amazon purchase attribution.
