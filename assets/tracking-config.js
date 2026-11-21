@@ -1,11 +1,13 @@
 /* Shadrin Method reader journey configuration.
  * GA4 loads only after visitor analytics consent.
- * Official Amazon Attribution URLs (Nov 3 2026 CSV) must remain unchanged.
- * Key format: overthinking:<source_lang>:<article_slug> or overthinking:direct
+ * Keep all Amazon-issued attribution URLs byte-for-byte unchanged.
+ * Key format: <series>:<source_lang>:<article_slug> or <series>:direct
  */
 window.SHADRIN_TRACKING = Object.freeze({
   ga4_measurement_id: "G-7B6QMCPRGF",
   amazon_attribution_links: Object.freeze({
+    "procrastination:en:cant-start-tasks": "https://www.amazon.com/dp/B0HS65MHRF?maas=maas_adg_8669D7393D3687AF88997EE50776A074_afap_abs&ref_=aa_maas&tag=maas",
+    "procrastination:ru:cant-start-tasks": "https://www.amazon.com/dp/B0HS65MHRF?maas=maas_adg_9B3662ECB1D056BD5F9CEDE5694B6C85_afap_abs&ref_=aa_maas&tag=maas",
     "overthinking:en:replaying-embarrassing-moment-at-work": "https://www.amazon.com/dp/B0HM27MPX7?maas=maas_adg_B3DBB28FDB47861A125173FD4F2B5659_afap_abs&ref_=aa_maas&tag=maas",
     "overthinking:ru:replaying-embarrassing-moment-at-work": "https://www.amazon.com/dp/B0HM27MPX7?maas=maas_adg_C87C0060E8BD52A10B7AA8EF19AD5403_afap_abs&ref_=aa_maas&tag=maas",
     "overthinking:direct": "https://www.amazon.com/dp/B0HM27MPX7?maas=maas_adg_37ACA9D5465EBDBFD34476D8719ADB40_afap_abs&ref_=aa_maas&tag=maas",
