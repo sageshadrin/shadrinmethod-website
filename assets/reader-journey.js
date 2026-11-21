@@ -174,8 +174,8 @@
       }
 
       // Article editorial Amazon links use their own official attribution tag.
-      if (sourceSeries === "overthinking" && sourceArticle && isAmazon(url)) {
-        var articleTag = attributionLinks["overthinking:" + language + ":" + sourceArticle];
+      if (sourceSeries && sourceArticle && isAmazon(url)) {
+        var articleTag = attributionLinks[sourceSeries + ":" + language + ":" + sourceArticle];
         if (typeof articleTag === "string" && articleTag) {
           anchor.href = articleTag;
         }
