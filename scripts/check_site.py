@@ -78,6 +78,28 @@ def check():
                         "/contact/" if path.startswith("/contact/thanks/") else path)
         if len(nav) != 1 or nav[0].get("href") != expected_nav:
             errors.append(f"{relative}: incorrect current navigation item")
+        # Reader-support global navigation and privacy-safe community link.
+        faq_menu = "/ru/faq/" if expected_lang == "ru" else "/faq/"
+        faq_nav = [a for a in page.attrs("a") if a.get("href") == faq_menu and "navlink" in a.get("class", "").split()]
+        if len(faq_nav) != 1:
+            errors.append(f"{relative}: expected exactly one FAQ menu link")
+        footer_match = re.search(r"<footer\b[^>]*>(.*?)</footer>", file.read_text(), flags=re.I | re.S)
+        if not footer_match:
+            errors.append(f"{relative}: missing footer")
+        else:
+            footer_page = Page(footer_match.group(1))
+            reddit_anchors = [a for a in footer_page.attrs("a")
+                              if a.get("href") == "https://www.reddit.com/r/WhyWeGetStuck/"]
+            if len(reddit_anchors) != 1:
+                errors.append(f"{relative}: missing one persistent Reddit Community footer link")
+        if path in ("/faq/", "/ru/faq/"):
+            if len(page.attrs("details")) < 12 or len(page.attrs("summary")) != len(page.attrs("details")):
+                errors.append(f"{relative}: expected 12 or more complete FAQ questions")
+            expected_h1 = "ЧаВо" if expected_lang == "ru" else "FAQ"
+            if f"<h1>{expected_h1}</h1>" not in file.read_text():
+                errors.append(f"{relative}: incorrect FAQ title or Russian capitalisation")
+            if "https://www.reddit.com/r/WhyWeGetStuck/" not in file.read_text():
+                errors.append(f"{relative}: missing reader-support community link")
         # Editorial outbound-link policy: Resources content links only to
         # this site or Amazon book pages. The confirmed author-community link
         # is permitted only in the site's persistent footer.
