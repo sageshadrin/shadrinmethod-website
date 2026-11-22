@@ -153,4 +153,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/procrastination/cant-start-tasks/" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/procrastination/cant-start-tasks/" />
   </url>
+  <url>
+    <loc>https://shadrinmethod.com/faq/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/faq/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/faq/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/ru/faq/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/faq/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/faq/" />
+  </url>
 </urlset>

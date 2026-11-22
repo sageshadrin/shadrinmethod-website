@@ -11,7 +11,7 @@ from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-NAV_ROUTES = ["/", "/method/", "/books/", "/author/", "/resources/", "/contact/"]
+NAV_ROUTES = ["/", "/method/", "/books/", "/author/", "/resources/", "/faq/", "/contact/"]
 
 
 class Handler(SimpleHTTPRequestHandler):
