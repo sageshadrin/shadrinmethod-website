@@ -78,10 +78,13 @@ def check():
                         "/contact/" if path.startswith("/contact/thanks/") else path)
         if len(nav) != 1 or nav[0].get("href") != expected_nav:
             errors.append(f"{relative}: incorrect current navigation item")
-        # Editorial outbound-link policy: all Resources pages link only to
-        # this website, except for Amazon book product pages (/dp/ASIN).
+        # Editorial outbound-link policy: Resources content links only to
+        # this site or Amazon book pages. The confirmed author-community link
+        # is permitted only in the site's persistent footer.
         # No citations or links to independent external websites.
         if relative.startswith(("resources/", "ru/resources/")):
+            footer = re.search(r"<footer\\b[^>]*>(.*?)</footer>", file.read_text(), flags=re.I | re.S)
+            footer_hrefs = {a.get("href", "") for a in Page(footer.group(1)).attrs("a")} if footer else set()
             for anchor in page.attrs("a"):
                 href = anchor.get("href", "")
                 parsed = urlsplit(href)
@@ -90,6 +93,9 @@ def check():
                     errors.append(f"{relative}: protocol-relative external link prohibited: {href}")
                 elif parsed.scheme in ("http", "https"):
                     if host in {"shadrinmethod.com", "www.shadrinmethod.com"}:
+                        continue
+                    if (href == "https://www.reddit.com/r/WhyWeGetStuck/"
+                            and href in footer_hrefs):
                         continue
                     if (re.fullmatch(r"(?:[a-z0-9-]+\.)*amazon\.[a-z.]+", host)
                             and re.match(r"^/dp/[a-zA-Z0-9]{10}(?:/|$)", parsed.path)):
@@ -157,7 +163,7 @@ def check():
                     errors.append(f"{relative}: missing fragment {reference}")
         if "{{" in file.read_text():
             errors.append(f"{relative}: unresolved template token")
-    for path in ["/", "/method/", "/books/", "/author/", "/resources/", "/ru/", "/ru/method/", "/ru/books/", "/ru/author/", "/ru/resources/", "/contact/", "/ru/contact/", "/contact/thanks/", "/ru/contact/thanks/"]:
+    for path in ["/", "/method/", "/books/", "/author/", "/resources/", "/ru/", "/ru/method/", "/ru/books/", "/ru/author/", "/ru/resources/", "/contact/", "/ru/contact/", "/contact/thanks/", "/ru/contact/thanks/", "/faq/", "/ru/faq/"]:
         if not local_file(path).is_file():
             errors.append(f"Missing required page: {path}")
     image = (ROOT / "assets/social-card.png").read_bytes()
