@@ -163,4 +163,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/faq/" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/faq/" />
   </url>
+  <url>
+    <loc>https://shadrinmethod.com/resources/procrastination/small-tasks-instead-of-important-work/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/procrastination/small-tasks-instead-of-important-work/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/procrastination/small-tasks-instead-of-important-work/" />
+  </url>
+  <url>
+    <loc>https://shadrinmethod.com/ru/resources/procrastination/small-tasks-instead-of-important-work/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shadrinmethod.com/resources/procrastination/small-tasks-instead-of-important-work/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://shadrinmethod.com/ru/resources/procrastination/small-tasks-instead-of-important-work/" />
+  </url>
 </urlset>

@@ -25,7 +25,8 @@
     "client-presentation-anxiety": true,
     "how-to-stop-thinking-about-work": true,
     "replaying-embarrassing-moment-at-work": true,
-    "cant-start-tasks": true
+    "cant-start-tasks": true,
+    "small-tasks-instead-of-important-work": true
   };
 
   var path = window.location.pathname;
