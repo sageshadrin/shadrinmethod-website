@@ -83,7 +83,7 @@ def check():
         # is permitted only in the site's persistent footer.
         # No citations or links to independent external websites.
         if relative.startswith(("resources/", "ru/resources/")):
-            footer = re.search(r"<footer\\b[^>]*>(.*?)</footer>", file.read_text(), flags=re.I | re.S)
+            footer = re.search(r"<footer\b[^>]*>(.*?)</footer>", file.read_text(), flags=re.I | re.S)
             footer_hrefs = {a.get("href", "") for a in Page(footer.group(1)).attrs("a")} if footer else set()
             for anchor in page.attrs("a"):
                 href = anchor.get("href", "")
