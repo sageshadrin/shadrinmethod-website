@@ -1,12 +1,12 @@
 # SHADRIN BOOK FACTORY — Reader Support Handoff (Books I–III)
 
-**Status:** URLs prepared in SHADRIN METHOD WEBSITE stage 1. Do not edit or publish manuscripts from the website repository.
+**Status (2026-11-22):** Reader-support site and Reddit connection confirmed working by the author, including an incognito (signed-out) website → Reddit check. The English FAQ link in the pinned community post was tested. Do not edit or publish manuscripts from the website repository.
 
 ## Stable reader-support URLs
 
 - English FAQ: https://shadrinmethod.com/faq/
 - Русский ЧаВо: https://shadrinmethod.com/ru/faq/
-- Existing Reddit community: https://www.reddit.com/r/WhyWeGetStuck/ (public discussion; confirm live access and sticky post before book publication)
+- Existing Reddit community: https://www.reddit.com/r/WhyWeGetStuck/ (public discussion; moderator pinned the English welcome post under Community Highlights, visible signed-out)
 
 These FAQ pages are intended for every Sage Shadrin book, not only Book IV. They require no reader account, additional paid service, or proof of purchase.
 
@@ -16,18 +16,16 @@ These FAQ pages are intended for every Sage Shadrin book, not only Book IV. They
 
 Questions about a term or a practice in this book? Visit the free reader FAQ at https://shadrinmethod.com/faq/ for short clarifications and a route to the author's public community. The FAQ does not replace the complete instructions in the book. Community discussions on Reddit are public, so please avoid sharing personal or sensitive details.
 
-## Черновик заключительной страницы (RU, согласовать в Книжной фабрике)
+## Localization policy / языковая политика
 
-### Поддержка читателей
-
-Если у вас возник вопрос о понятии или практике из этой книги, откройте бесплатную страницу «ЧаВо» по адресу https://shadrinmethod.com/ru/faq/. Там собраны краткие пояснения и переход в авторское сообщество. Страница не заменяет полные инструкции книги. Обсуждения в Reddit публичны: не публикуйте персональные и конфиденциальные сведения.
+Books I–III currently have English editions only; no Russian-language book editions are planned. **Use the English Reader Support closing page only** in the current books. The Russian ЧаВо page remains available as a bilingual website resource but should not be linked as a Russian-book support page. The Reddit community and its pinned welcome post are English-language resources; they link to the English FAQ only.
 
 ## Production constraints
 
 1. Prepare the support closing page separately in Books I, II, and III when the Book Factory approves content and each edition's layout.
-2. Place the matching language URL in each edition; keep visible URLs readable in print editions.
+2. Place https://shadrinmethod.com/faq/ in the current English editions; keep the URL readable in print editions.
 3. Avoid any promises of personal consultation, therapy, guaranteed results, or paid membership.
 4. Do not alter the core book methods, chapters, endnotes, or Amazon KDP files from this website project.
-5. Confirm that both FAQ pages and the Reddit community links are actually live before releasing revised books.
+5. The author confirmed English FAQ ↔ Reddit navigation and signed-out visibility on 2026-11-22. Still verify the end-of-book link in each new edition's production proof.
 
 **Handoff status:** document prepared; not transmitted to a separate Book Factory project by any automated tool.
